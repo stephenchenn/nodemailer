@@ -23,14 +23,17 @@ transporter.verify((error, success) => {
 
 router.post('/send', (req, res, next) => {
   var name = req.body.name
-  var email = req.body.email
+  var email = 'chen.stephen141@gmail.com' //change this to be fetched from db by filter(emails of students who are enrolled to that class)
   var message = req.body.message
-  var content = `name: ${name} \nemail: ${email} \nmessage: ${message}`
+  var date_time = req.body.date_time
+  var venue = req.body.venue
+  var class_type = req.body.class_type
+  var content = `Your class has been updated!\nName: ${name}\nDate and time: ${date_time}\nVenue: ${venue}\nClass type: ${class_type}\nMessage: ${message}`
 
   var mail = {
     from: 'chen.stephen151@gmail.com',
     to: email,
-    subject: message,
+    subject: 'Class details updated for ' + name,
     text: content
   }
 

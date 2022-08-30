@@ -6,14 +6,19 @@ class ChangeClassDetails extends Component{
     handleSubmit(e){
         e.preventDefault();
         const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
+        //const email = document.getElementById('email').value;
+        const date_time = document.getElementById('date_time').value;
+        const venue = document.getElementById('venue').value;
+        const class_type = document.getElementById('class_type').value;
         const message = document.getElementById('message').value;
         axios({
             method: "POST", 
             url:"http://localhost:3002/send", 
             data: {
-                name: name,   
-                email: email,  
+                name: name,
+                date_time: date_time,
+                venue: venue,
+                class_type: class_type,
                 message: message,
             }
         }).then((response)=>{
@@ -41,9 +46,21 @@ class ChangeClassDetails extends Component{
                         <input type="text" className="form-control" id="name" />
                     </div>
                     <div className="form-group">
+                        <label htmlFor="date and time">Date and Time</label>
+                        <input type="text" className="form-control" id="date_time" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="venue">Venue</label>
+                        <input type="text" className="form-control" id="venue" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="class_type">Class Type</label>
+                        <input type="text" className="form-control" id="class_type" />
+                    </div>
+                    {/* <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Email address</label>
                         <input type="email" className="form-control" id="email" aria-describedby="emailHelp" />
-                    </div>
+                    </div> */}
                     <div className="form-group">
                         <label htmlFor="message">Message</label>
                         <textarea className="form-control" rows="5" id="message"></textarea>
